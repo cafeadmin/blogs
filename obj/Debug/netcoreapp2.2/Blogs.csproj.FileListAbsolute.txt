@@ -1,0 +1,11 @@
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\bin\Debug\netcoreapp2.2\Blogs.deps.json
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\bin\Debug\netcoreapp2.2\Blogs.runtimeconfig.json
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\bin\Debug\netcoreapp2.2\Blogs.runtimeconfig.dev.json
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\bin\Debug\netcoreapp2.2\Blogs.dll
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\bin\Debug\netcoreapp2.2\Blogs.pdb
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.csprojAssemblyReference.cache
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.csproj.CoreCompileInputs.cache
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.AssemblyInfoInputs.cache
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.AssemblyInfo.cs
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.dll
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.pdb
