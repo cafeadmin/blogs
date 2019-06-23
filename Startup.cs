@@ -13,9 +13,11 @@ using WebEssentials.AspNetCore.OutputCaching;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.Core;
 using WilderMinds.MetaWeblog;
+using Blogs.Services;
 
 using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
 using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
+using Microsoft.Extensions.Options;
 
 namespace Blogs
 {
@@ -43,9 +45,17 @@ namespace Blogs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PostsDatabaseSettings>(
+            Configuration.GetSection("PostsDatabaseSettings"));
+
+            services.AddSingleton<PostsDatabaseSettings>(sp => {
+            return sp.GetRequiredService<IOptions<PostsDatabaseSettings>>().Value;
+            });
+            //services.AddSingleton<MongoDbBlogService>();
+            
+            services.AddSingleton<IBlogService, MongoDbBlogService>();
             services.AddMvc();
 
-            services.AddSingleton<IBlogService, FileBlogService>();
             services.Configure<BlogSettings>(Configuration.GetSection("blog"));
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMetaWeblog<MetaWeblogService>();
@@ -89,6 +99,7 @@ namespace Blogs
                 pipeline.CompileScssFiles()
                         .InlineImages(1);
             });
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

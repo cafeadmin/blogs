@@ -5,11 +5,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Blogs.Models
 {
+    [BsonIgnoreExtraElements]
     public class Post
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         [Required]
         public string ID { get; set; } = DateTime.UtcNow.Ticks.ToString();
 

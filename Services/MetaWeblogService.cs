@@ -126,7 +126,7 @@ namespace Blogs
         {
             ValidateUser(username, password);
 
-            var request = _context.HttpContext.Request;
+                var request = _context.HttpContext.Request;
             string url = request.Scheme + "://" + request.Host;
 
             return new[] { new BlogInfo {
