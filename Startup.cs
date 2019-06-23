@@ -34,12 +34,12 @@ namespace Blogs
         {
             BuildWebHost(args).Run();
         }
-
+       
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseKestrel(a => a.AddServerHeader = false)
-                .UseUrls("http://*:5000")
+                .UseUrls("http://*:80")
                 .Build();
 
         public IConfiguration Configuration { get; }
