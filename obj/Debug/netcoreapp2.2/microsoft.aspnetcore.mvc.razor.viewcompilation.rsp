@@ -1,0 +1,13 @@
+C:\Users\adyarcafe\Documents\My Web Sites\Blogs
+--output-path=obj\Debug\netcoreapp2.2\
+--application-name=Blogs
+--content-root=C:\Users\adyarcafe\Documents\My Web Sites\Blogs
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Account\Login.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Blog\Comments.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Blog\Edit.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Blog\Index.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Blog\Post.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Shared\_Layout.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\Shared\_SocialSharing.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\_ViewImports.cshtml
+--file=C:\Users\adyarcafe\Documents\My Web Sites\Blogs\Views\_ViewStart.cshtml

@@ -18,6 +18,8 @@ using Blogs.Services;
 using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
 using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 namespace Blogs
 {
@@ -45,6 +47,10 @@ namespace Blogs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.Configure<ForwardedHeadersOptions>(options =>
+            // {
+            //     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            // });
             services.Configure<PostsDatabaseSettings>(
             Configuration.GetSection("PostsDatabaseSettings"));
 
@@ -68,7 +74,7 @@ namespace Blogs
                     Duration = 3600
                 };
             });
-
+            
             // Cookie authentication.
             services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -128,7 +134,10 @@ namespace Blogs
             {
                 app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
             }
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseMetaWeblog("/metaweblog");
             app.UseAuthentication();
 
