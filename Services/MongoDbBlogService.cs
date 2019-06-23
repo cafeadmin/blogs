@@ -69,7 +69,8 @@ namespace Blogs.Services
             var post = _cache.FirstOrDefault(p => p.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase));
             bool isAdmin = IsAdmin();
 
-            if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
+            //if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
+            if (post != null && (post.IsPublished || isAdmin))
             {
                 return Task.FromResult(post);
             }

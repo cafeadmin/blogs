@@ -5,7 +5,7 @@ namespace Blogs
     public class PostsDatabaseSettings : IPostsDatabaseSettings
     {
         public string PostsCollectionName { get; set; } = "Posts";
-        public string ConnectionString { get; set; } ="mongodb://localhost:27017";
+        public string ConnectionString { get; set; } = "mongodb+srv://adyarcafe:jFXmEAZ7X8OWMRa8@knowyourhobby-stjiv.gcp.mongodb.net/test?retryWrites=true&w=majority";
         public string DatabaseName { get; set; } ="adyarcafe";
     }
 
