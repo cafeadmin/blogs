@@ -83,7 +83,8 @@ namespace Blogs.Services
             var post = _cache.FirstOrDefault(p => p.ID.Equals(id, StringComparison.OrdinalIgnoreCase));
             bool isAdmin = IsAdmin();
 
-            if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
+            //if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
+            if (post != null && (post.IsPublished || isAdmin))
             {
                 return Task.FromResult(post);
             }
@@ -103,49 +104,54 @@ namespace Blogs.Services
 
             return Task.FromResult(categories);
         }
-
-        public async Task SavePost(Post post)
+        public async Task SavePost(string id, Post post)
         {
-            string filePath = "GetFilePath(post);";
-            post.LastModified = DateTime.UtcNow;
+             _posts.ReplaceOne(x => x.ID == id , post);
+        }
+        public async Task SavePost( Post post)
+        {
+             //_posts.InsertOne(post); 
+             _posts.ReplaceOne(x => x.ID == post.ID , post);           
+            // string filePath = "GetFilePath(post);";
+            // post.LastModified = DateTime.UtcNow;
 
-            XDocument doc = new XDocument(
-                            new XElement("post",
-                                new XElement("title", post.Title),
-                                new XElement("slug", post.Slug),
-                                new XElement("pubDate", post.PubDate.ToString("yyyy-MM-dd HH:mm:ss")),
-                                new XElement("lastModified", post.LastModified.ToString("yyyy-MM-dd HH:mm:ss")),
-                                new XElement("excerpt", post.Excerpt),
-                                new XElement("content", post.Content),
-                                new XElement("ispublished", post.IsPublished),
-                                new XElement("categories", string.Empty),
-                                new XElement("comments", string.Empty)
-                            ));
+            // XDocument doc = new XDocument(
+            //                 new XElement("post",
+            //                     new XElement("title", post.Title),
+            //                     new XElement("slug", post.Slug),
+            //                     new XElement("pubDate", post.PubDate.ToString("yyyy-MM-dd HH:mm:ss")),
+            //                     new XElement("lastModified", post.LastModified.ToString("yyyy-MM-dd HH:mm:ss")),
+            //                     new XElement("excerpt", post.Excerpt),
+            //                     new XElement("content", post.Content),
+            //                     new XElement("ispublished", post.IsPublished),
+            //                     new XElement("categories", string.Empty),
+            //                     new XElement("comments", string.Empty)
+            //                 ));
 
-            XElement categories = doc.XPathSelectElement("post/categories");
-            foreach (string category in post.Categories)
-            {
-                categories.Add(new XElement("category", category));
-            }
+            // XElement categories = doc.XPathSelectElement("post/categories");
+            // foreach (string category in post.Categories)
+            // {
+            //     categories.Add(new XElement("category", category));
+            // }
 
-            XElement comments = doc.XPathSelectElement("post/comments");
-            foreach (Comment comment in post.Comments)
-            {
-                comments.Add(
-                    new XElement("comment",
-                        new XElement("author", comment.Author),
-                        new XElement("email", comment.Email),
-                        new XElement("date", comment.PubDate.ToString("yyyy-MM-dd HH:m:ss")),
-                        new XElement("content", comment.Content),
-                        new XAttribute("isAdmin", comment.IsAdmin),
-                        new XAttribute("id", comment.ID)
-                    ));
-            }
+            // XElement comments = doc.XPathSelectElement("post/comments");
+            // foreach (Comment comment in post.Comments)
+            // {
+            //     comments.Add(
+            //         new XElement("comment",
+            //             new XElement("author", comment.Author),
+            //             new XElement("email", comment.Email),
+            //             new XElement("date", comment.PubDate.ToString("yyyy-MM-dd HH:m:ss")),
+            //             new XElement("content", comment.Content),
+            //             new XAttribute("isAdmin", comment.IsAdmin),
+            //             new XAttribute("id", comment.ID)
+            //         ));
+            // }
 
-            using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
-            {
-                await doc.SaveAsync(fs, SaveOptions.None, CancellationToken.None).ConfigureAwait(false);
-            }
+            // using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
+            // {
+            //     await doc.SaveAsync(fs, SaveOptions.None, CancellationToken.None).ConfigureAwait(false);
+            // }
 
             if (!_cache.Contains(post))
             {

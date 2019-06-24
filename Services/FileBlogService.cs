@@ -89,7 +89,9 @@ namespace Blogs
 
             return Task.FromResult(categories);
         }
-
+        public async Task SavePost(string id, Post post){
+            throw new NotImplementedException();
+        }
         public async Task SavePost(Post post)
         {
             string filePath = GetFilePath(post);

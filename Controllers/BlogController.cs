@@ -107,7 +107,7 @@ namespace Blogs.Models
 
             await _blog.SavePost(existing);
 
-            await SaveFilesToDisk(existing);
+            //await SaveFilesToDisk(existing);
 
             return Redirect(post.GetLink());
         }

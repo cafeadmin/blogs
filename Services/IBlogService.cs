@@ -20,7 +20,7 @@ namespace Blogs
         Task<IEnumerable<string>> GetCategories();
 
         Task SavePost(Post post);
-
+        Task SavePost(string id, Post post);
         Task DeletePost(Post post);
 
         Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null);
@@ -101,7 +101,7 @@ namespace Blogs
         }
 
         public abstract Task SavePost(Post post);
-
+        public abstract Task SavePost(string id, Post post);
         public abstract Task DeletePost(Post post);
 
         public abstract Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null);

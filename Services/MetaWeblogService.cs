@@ -79,7 +79,7 @@ namespace Blogs
                     existing.PubDate = post.dateCreated;
                 }
 
-                _blog.SavePost(existing).GetAwaiter().GetResult();
+                _blog.SavePost(postid, existing);
 
                 return true;
             }
