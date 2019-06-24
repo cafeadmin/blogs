@@ -9,3 +9,14 @@ C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.As
 C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.AssemblyInfo.cs
 C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.dll
 C:\Users\adyarcafe\Documents\My Web Sites\Blogs\obj\Debug\netcoreapp2.2\Blogs.pdb
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\bin\Debug\netcoreapp2.2\Blogs.deps.json
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\bin\Debug\netcoreapp2.2\Blogs.runtimeconfig.json
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\bin\Debug\netcoreapp2.2\Blogs.runtimeconfig.dev.json
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\bin\Debug\netcoreapp2.2\Blogs.dll
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\bin\Debug\netcoreapp2.2\Blogs.pdb
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.csprojAssemblyReference.cache
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.csproj.CoreCompileInputs.cache
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.AssemblyInfoInputs.cache
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.AssemblyInfo.cs
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.dll
+C:\Users\mrajakani\Documents\GitHub\know-your-hobby\blogs\obj\Debug\netcoreapp2.2\Blogs.pdb
