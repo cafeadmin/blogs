@@ -173,13 +173,13 @@ namespace Blogs.Services
 
         public async Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null)
         {
-            suffix = suffix ?? DateTime.UtcNow.Ticks.ToString();
+            // suffix = suffix ?? DateTime.UtcNow.Ticks.ToString();
 
-            string ext = Path.GetExtension(fileName);
-            string name = Path.GetFileNameWithoutExtension(fileName);
+            // string ext = Path.GetExtension(fileName);
+            // string name = Path.GetFileNameWithoutExtension(fileName);
 
-            string relative = $"files/{name}_{suffix}{ext}";
-            //string absolute = Path.Combine(_folder, relative);
+            // string relative = $"files/{name}_{suffix}{ext}";
+            // string absolute = Path.Combine(_folder, relative);
             // string dir = Path.GetDirectoryName(absolute);
 
             // Directory.CreateDirectory(dir);
@@ -188,7 +188,7 @@ namespace Blogs.Services
             //     await writer.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
             // }
 
-            return "/posts/" + relative;
+            return "/posts/" ;//+ relative;
         }
 
         private void Initialize()
