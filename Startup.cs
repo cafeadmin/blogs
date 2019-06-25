@@ -39,7 +39,7 @@ namespace Blogs
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseKestrel(a => a.AddServerHeader = false)
-                .UseUrls("http://*:80")
+                .UseUrls("http://*:5000")
                 .Build();
 
         public IConfiguration Configuration { get; }
