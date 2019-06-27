@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Net.Http.Headers;
 using System;
+using System.IO;
 using WebEssentials.AspNetCore.OutputCaching;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.Core;
@@ -57,10 +58,10 @@ namespace Blogs
             services.AddSingleton<PostsDatabaseSettings>(sp => {
             return sp.GetRequiredService<IOptions<PostsDatabaseSettings>>().Value;
             });
-            //services.AddSingleton<MongoDbBlogService>();
+            
             
             services.AddSingleton<IBlogService, MongoDbBlogService>();
-           // services.AddSingleton<IBlogService, FileBlogService>();
+            //services.AddSingleton<IBlogService, FileBlogService>();
             services.AddMvc();
 
 
