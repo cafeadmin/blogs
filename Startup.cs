@@ -18,6 +18,7 @@ using Blogs.Services;
 using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
 using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
 
@@ -61,6 +62,7 @@ namespace Blogs
             
             services.AddSingleton<IBlogService, MongoDbBlogService>();
             services.AddMvc();
+
 
             services.Configure<BlogSettings>(Configuration.GetSection("blog"));
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -119,9 +121,9 @@ namespace Blogs
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
             app.UseWebOptimizer();
-
             app.UseStaticFiles(new StaticFileOptions()
             {
+                FileProvider = new PhysicalFileProvider($@"{AppDomain.CurrentDomain.BaseDirectory}/wwwroot"),
                 OnPrepareResponse = (context) =>
                 {
                     var time = TimeSpan.FromDays(365);

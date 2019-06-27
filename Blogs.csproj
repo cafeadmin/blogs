@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0"/>
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers">
       <Version>1.0.14</Version>
     </PackageReference>
