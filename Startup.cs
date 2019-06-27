@@ -40,6 +40,8 @@ namespace Blogs
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseKestrel(a => a.AddServerHeader = false)
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseWebRoot("Content")
                 .UseUrls("http://*:5000")
                 .Build();
 
@@ -48,10 +50,7 @@ namespace Blogs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.Configure<ForwardedHeadersOptions>(options =>
-            // {
-            //     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-            // });
+           
             services.Configure<PostsDatabaseSettings>(
             Configuration.GetSection("PostsDatabaseSettings"));
 
