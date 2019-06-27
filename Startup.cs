@@ -61,6 +61,7 @@ namespace Blogs
             //services.AddSingleton<MongoDbBlogService>();
             
             services.AddSingleton<IBlogService, MongoDbBlogService>();
+           // services.AddSingleton<IBlogService, FileBlogService>();
             services.AddMvc();
 
 
@@ -121,14 +122,13 @@ namespace Blogs
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
             app.UseWebOptimizer();
-            app.UseStaticFiles(new StaticFileOptions()
+            app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider($@"{System.Environment.CurrentDirectory}/wwwroot"),
-                OnPrepareResponse = (context) =>
+                OnPrepareResponse = ctx =>
                 {
-                    var time = TimeSpan.FromDays(365);
-                    context.Context.Response.Headers[HeaderNames.CacheControl] = $"max-age={time.TotalSeconds.ToString()}";
-                    context.Context.Response.Headers[HeaderNames.Expires] = DateTime.UtcNow.Add(time).ToString("R");
+                    const int durationInSeconds = 60 * 60 * 24;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
                 }
             });
 
