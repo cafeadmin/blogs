@@ -13862,6 +13862,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Azure.ImageOptimizer >= 1.0.0.38",
+      "DnsClient >= 1.2.0",
       "LigerShark.WebOptimizer.Core >= 1.0.175-beta",
       "LigerShark.WebOptimizer.Sass >= 1.0.33-beta",
       "Microsoft.AspNetCore.All >= 2.0.0",
@@ -13919,6 +13920,10 @@
           "Azure.ImageOptimizer": {
             "target": "Package",
             "version": "[1.0.0.38, )"
+          },
+          "DnsClient": {
+            "target": "Package",
+            "version": "[1.2.0, )"
           },
           "LigerShark.WebOptimizer.Core": {
             "target": "Package",

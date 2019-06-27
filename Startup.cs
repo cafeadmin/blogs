@@ -123,7 +123,7 @@ namespace Blogs
             app.UseWebOptimizer();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider($@"{AppDomain.CurrentDomain.BaseDirectory}/wwwroot"),
+                FileProvider = new PhysicalFileProvider($@"{System.Environment.CurrentDirectory}/wwwroot"),
                 OnPrepareResponse = (context) =>
                 {
                     var time = TimeSpan.FromDays(365);
