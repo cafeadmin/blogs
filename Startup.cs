@@ -40,9 +40,7 @@ namespace Blogs
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(a => a.AddServerHeader = false)
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseWebRoot("Content")
+                .UseKestrel(a => a.AddServerHeader = false)             
                 .UseUrls("http://*:5000")
                 .Build();
 
@@ -102,12 +100,12 @@ namespace Blogs
             services.AddSingleton<IWmmLogger, WmmNullLogger>(); // Used by HTML minifier
 
             // Bundling, minification and Sass transpilation (https://github.com/ligershark/WebOptimizer)
-            services.AddWebOptimizer(pipeline =>
-            {
-                pipeline.MinifyJsFiles();
-                pipeline.CompileScssFiles()
-                        .InlineImages(1);
-            });
+            // services.AddWebOptimizer(pipeline =>
+            // {
+            //     pipeline.MinifyJsFiles();
+            //     pipeline.CompileScssFiles()
+            //             .InlineImages(1);
+            // });
          
         }
 
@@ -121,7 +119,7 @@ namespace Blogs
             }
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
-            app.UseWebOptimizer();
+           // app.UseWebOptimizer();
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
