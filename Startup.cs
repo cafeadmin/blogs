@@ -100,12 +100,12 @@ namespace Blogs
             services.AddSingleton<IWmmLogger, WmmNullLogger>(); // Used by HTML minifier
 
             // Bundling, minification and Sass transpilation (https://github.com/ligershark/WebOptimizer)
-            // services.AddWebOptimizer(pipeline =>
-            // {
-            //     pipeline.MinifyJsFiles();
-            //     pipeline.CompileScssFiles()
-            //             .InlineImages(1);
-            // });
+            services.AddWebOptimizer(pipeline =>
+            {
+                pipeline.MinifyJsFiles();
+                pipeline.CompileScssFiles()
+                        .InlineImages(1);
+            });
          
         }
 
@@ -119,7 +119,7 @@ namespace Blogs
             }
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
-           // app.UseWebOptimizer();
+            app.UseWebOptimizer();
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
