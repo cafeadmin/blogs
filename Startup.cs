@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Net.Http.Headers;
 using System;
+using System.IO;
 using WebEssentials.AspNetCore.OutputCaching;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.Core;
@@ -39,7 +40,7 @@ namespace Blogs
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(a => a.AddServerHeader = false)
+                .UseKestrel(a => a.AddServerHeader = false)             
                 .UseUrls("http://*:5000")
                 .Build();
 
@@ -48,20 +49,17 @@ namespace Blogs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.Configure<ForwardedHeadersOptions>(options =>
-            // {
-            //     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-            // });
+           
             services.Configure<PostsDatabaseSettings>(
             Configuration.GetSection("PostsDatabaseSettings"));
 
             services.AddSingleton<PostsDatabaseSettings>(sp => {
             return sp.GetRequiredService<IOptions<PostsDatabaseSettings>>().Value;
             });
-            //services.AddSingleton<MongoDbBlogService>();
+            
             
             services.AddSingleton<IBlogService, MongoDbBlogService>();
-           // services.AddSingleton<IBlogService, FileBlogService>();
+            //services.AddSingleton<IBlogService, FileBlogService>();
             services.AddMvc();
 
 
@@ -102,12 +100,12 @@ namespace Blogs
             services.AddSingleton<IWmmLogger, WmmNullLogger>(); // Used by HTML minifier
 
             // Bundling, minification and Sass transpilation (https://github.com/ligershark/WebOptimizer)
-            services.AddWebOptimizer(pipeline =>
-            {
-                pipeline.MinifyJsFiles();
-                pipeline.CompileScssFiles()
-                        .InlineImages(1);
-            });
+            // services.AddWebOptimizer(pipeline =>
+            // {
+            //     pipeline.MinifyJsFiles();
+            //     pipeline.CompileScssFiles()
+            //             .InlineImages(1);
+            // });
          
         }
 
@@ -121,7 +119,7 @@ namespace Blogs
             }
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
-            app.UseWebOptimizer();
+           // app.UseWebOptimizer();
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
