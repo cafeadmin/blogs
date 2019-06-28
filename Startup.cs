@@ -120,6 +120,7 @@ namespace Blogs
 
             app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
            // app.UseWebOptimizer();
+            app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
