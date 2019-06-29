@@ -40,6 +40,7 @@ namespace Blogs
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseWebRoot("wwwroot")
                 .UseKestrel(a => a.AddServerHeader = false)             
                 .UseUrls("http://*:5000")
                 .Build();
